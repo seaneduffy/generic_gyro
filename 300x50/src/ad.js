@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const windowDimensions = {};
 
   let container = scripts[index].parentNode;
-  const body = document.body;
+  let body = document.body;
   let content = null;
   let sFlag = false;
   let inExp = false;
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeFlag) {
       adDiv.removeChild(closeButton);
     } else {
-      body.removeChild(closeButton);
+      container.removeChild(closeButton);
     }
-    body.removeChild(adDiv);
+    container.removeChild(adDiv);
     banner.style.display = 'inline';
   };
 

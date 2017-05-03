@@ -50,12 +50,12 @@ function compile(done, watch) {
     module: {
       loaders: [{
         test: /(\.js)|(\.jsx)$/,
-        include: [
+        exclude: /node_modules/,
+        /* include: [
           path.resolve(__dirname, './src/'),
           path.resolve(__dirname, './node_modules/@blippar/ardp-viewer/'),
           path.resolve(__dirname, './node_modules/@blippar/ardp-banner/'),
-          path.resolve(__dirname, '../../../../../usr/local/lib/node_modules/@blippar/ardp-viewer'),
-        ],
+        ],*/
         loader: 'babel-loader',
         query: {
           presets: [
@@ -64,6 +64,10 @@ function compile(done, watch) {
             'babel-preset-stage-2',
           ].map(require.resolve),
         },
+      },
+      {
+        test: /\.css?/,
+        loader: 'style-loader!css-loader',
       }],
     },
   }, (error) => {
